@@ -7,7 +7,7 @@ The program relies on a custom router, in-memory storage, and `net/http` package
 ## Disclaimer
 
 This example is not a production ready code. Many techniques used in the project have an introductory purpose. They aim to demonstrate fundamental concepts in a readable and easy-to-understand manner.
-Namely, the custom router used by the application is inefficient compared to more complex solutions such as [httprouter](https://github.com/julienschmidt/httprouter). Likewise, in-memory hash table is not a persistent way to store data. However, this project serves as a good example on how to structure a Go application, manage dependencies, and unit tests. Where appropriate, the project includes links to external sources with more detailed explanations.
+Namely, the custom router used by the application is inefficient compared to more complex solutions such as [httprouter](https://github.com/julienschmidt/httprouter). Likewise, in-memory hash table is not a persistent way to store data. However, this project serves as a good example on how to structure a Go application, manage dependencies, and unit tests.
 
 ## Functionality
 
