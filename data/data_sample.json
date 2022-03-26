@@ -1,0 +1,32 @@
+[
+   {
+      "id": "1",
+      "name": "Riserva Ducale Chianti Classico",
+      "category": "Chianti Classico",
+      "volume": "0.75",
+      "region": "Chianti Classico, Italy",
+      "producer": "Ruffino",
+      "year": 2018,
+      "alcohol": "12%"
+  },
+  {
+      "id": "2",
+      "name": "Chianti Rufina Riserva",
+      "category": "Chianti",
+      "volume": "0.75",
+      "region": "Chianti Rufina, Italy",
+      "producer": "Frescobaldi",
+      "year": 2018,
+      "alcohol": "13.5%"
+   },
+   {
+      "id": "3",
+      "name": "Bourgogne Pinot Noir",
+      "category": "Pinot Noir",
+      "volume": "0.7",
+      "region": "Bourgogne, France",
+      "producer": "Bouchard Pere & Fils",
+      "year": 2019,
+      "alcohol": "12.5%"
+   }
+]
