@@ -1,3 +1,3 @@
-module local/winery
+module github.com/nmezhenskyi/go-rest-api-example
 
-go 1.17
+go 1.18
