@@ -1,4 +1,4 @@
-// In-memory hash table storage.
+// Package storage implements in-memory hash table storage.
 package storage
 
 import "sync"

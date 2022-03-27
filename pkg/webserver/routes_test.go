@@ -4,10 +4,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"io"
-	"local/winery/pkg/wine"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
 )
 
 var server *Server

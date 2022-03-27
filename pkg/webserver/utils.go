@@ -2,9 +2,10 @@ package webserver
 
 import (
 	"encoding/json"
-	"local/winery/pkg/wine"
 	"net/http"
 	"os"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
 )
 
 func (s *Server) PopulateWithData(file string) error {

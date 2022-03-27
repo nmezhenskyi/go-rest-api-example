@@ -2,8 +2,9 @@ package webserver
 
 import (
 	"fmt"
-	"local/winery/pkg/router"
 	"net/http"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/router"
 )
 
 func (s *Server) routes() {

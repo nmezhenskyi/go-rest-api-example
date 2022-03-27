@@ -6,8 +6,9 @@
 package main
 
 import (
-	"local/winery/pkg/webserver"
 	"log"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/webserver"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-// Provides routing functionality for an http server.
+// Package router provides routing functionality for an http server.
 package router
 
 import (

@@ -1,9 +1,12 @@
+// Package webserver contains http webserver implementation
+// and associated route handlers.
 package webserver
 
 import (
-	"local/winery/pkg/storage"
 	"log"
 	"net/http"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/storage"
 )
 
 type Server struct {

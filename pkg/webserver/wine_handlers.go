@@ -3,9 +3,10 @@ package webserver
 import (
 	"encoding/json"
 	"io/ioutil"
-	"local/winery/pkg/router"
-	"local/winery/pkg/wine"
 	"net/http"
+
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/router"
+	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
 )
 
 func (s *Server) handleWineGetAll() http.HandlerFunc {

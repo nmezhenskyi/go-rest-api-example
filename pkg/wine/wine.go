@@ -1,3 +1,4 @@
+// Package wine provides type definitions for the Wine resource.
 package wine
 
 type Wine struct {
