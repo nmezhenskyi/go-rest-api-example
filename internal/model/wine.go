@@ -1,4 +1,4 @@
-// Package wine provides type definitions for the Wine resource.
+// Package model provides type definitions for domain models.
 package model
 
 type Wine struct {
