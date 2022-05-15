@@ -1,6 +1,6 @@
 # Go REST API Example
 
-This is a small project that showcases a minimalistic REST API written in Go using only the standard library. It aims to show core concepts of Go.
+This project showcases a minimalistic REST API written in Go using only the standard library. It serves as an overview of core Go concepts.
 
 The program relies on a custom router, in-memory storage, and `net/http` package. The purpose of this API is to manage the resource *Wine*.
 
@@ -13,12 +13,12 @@ Namely, the custom router used by the application is inefficient compared to mor
 
 The API supports 6 HTTP end-points:
 
-- GET "/"
-- GET "/api/wine"
-- GET "/api/wine/:id"
-- POST "/api/wine"
-- PUT "/api/wine/:id"
-- DELETE "/api/wine/:id"
+- `GET "/"`
+- `GET "/api/wine"`
+- `GET "/api/wine/:id"`
+- `POST "/api/wine"`
+- `PUT "/api/wine/:id"`
+- `DELETE "/api/wine/:id"`
 
 The underlying resource is *Wine* with the following schema:
 
@@ -70,26 +70,30 @@ The underlying resource is *Wine* with the following schema:
 ## Project Structure
 
 - `/cmd`
-  - `/restapi/main.go`: file to run the app and build an executable
+  - `/restapi/main.go`: entry point that begins the execution of the program
 - `/internal`
-  - `/router`: custom router
+  - `/router`: custom http router
   - `/storage`: wrapper for a hash table to use as in-memory storage
   - `/webserver`: http webserver implementation and route handlers
   - `/model`: contains domain model *Wine*
 - `/data`
   - `/data_sample.json`: sample data for the webserver
 
-## How To Run
+## Commands
 
-Clone the repository and cd to its root folder.
+Compile:
 
-To start the server:
+- `go build -o ./bin/restapi ./cmd/restapi`
 
-- `go run ./cmd/restapi` or `go build ./cmd/restapi/main.go && ./main`
+Start the server:
 
-To run tests:
+- `./bin/restapi` or `go run ./cmd/restapi`
+
+Run tests:
 
 - `go test ./internal/webserver`
+
+Alternatively you can use Makefile
 
 ## Further Recommendations
 
