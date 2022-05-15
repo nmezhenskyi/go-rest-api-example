@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/router"
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/model"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/router"
 )
 
 func (s *Server) handleWineGetAll() http.HandlerFunc {
@@ -60,7 +60,7 @@ func (s *Server) handleWineCreate() http.HandlerFunc {
 			return
 		}
 
-		wineRecord := new(wine.Wine)
+		wineRecord := new(model.Wine)
 		err = json.Unmarshal(body, wineRecord)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -95,14 +95,14 @@ func (s *Server) handleWineUpdate() http.HandlerFunc {
 			return
 		}
 
-		update := new(wine.Wine)
+		update := new(model.Wine)
 		err = json.Unmarshal(body, update)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
 
-		newRecord := wineRecord.(wine.Wine)
+		newRecord := wineRecord.(model.Wine)
 
 		if update.Name != "" {
 			newRecord.Name = update.Name

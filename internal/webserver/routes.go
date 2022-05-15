@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/router"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/router"
 )
 
 func (s *Server) routes() {

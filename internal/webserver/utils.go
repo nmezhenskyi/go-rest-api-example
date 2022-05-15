@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/model"
 )
 
 func (s *Server) PopulateWithData(file string) error {
@@ -14,7 +14,7 @@ func (s *Server) PopulateWithData(file string) error {
 		return err
 	}
 
-	var records = []wine.Wine{}
+	var records = []model.Wine{}
 	err = json.Unmarshal(bytes, &records)
 	if err != nil {
 		return err

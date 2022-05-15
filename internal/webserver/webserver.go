@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/storage"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/storage"
 )
 
 type Server struct {

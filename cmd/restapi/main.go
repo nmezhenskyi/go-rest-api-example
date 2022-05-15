@@ -8,7 +8,7 @@ package main
 import (
 	"log"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/webserver"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/webserver"
 )
 
 func main() {

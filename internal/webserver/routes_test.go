@@ -8,7 +8,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/nmezhenskyi/go-rest-api-example/pkg/wine"
+	"github.com/nmezhenskyi/go-rest-api-example/internal/model"
 )
 
 var server *Server
@@ -56,7 +56,7 @@ func TestWineGetOne(t *testing.T) {
 }
 
 func TestWineCreate(t *testing.T) {
-	record := wine.Wine{
+	record := model.Wine{
 		ID:       "10",
 		Name:     "Example Name",
 		Category: "Example Category",
@@ -89,7 +89,7 @@ func TestWineUpdate(t *testing.T) {
 		t.Error("Failed to populate with data")
 	}
 
-	record := wine.Wine{
+	record := model.Wine{
 		Name:     "Example Name",
 		Category: "Example Category",
 		Label:    "Example Label",

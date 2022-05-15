@@ -1,5 +1,5 @@
 // Package wine provides type definitions for the Wine resource.
-package wine
+package model
 
 type Wine struct {
 	ID       string `json:"id"`
