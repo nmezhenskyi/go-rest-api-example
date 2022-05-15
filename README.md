@@ -70,12 +70,12 @@ The underlying resource is *Wine* with the following schema:
 ## Project Structure
 
 - `/cmd`
-  - `/winery.go`: file to run the app and build an executable
-- `/pkg`
+  - `/restapi/main.go`: file to run the app and build an executable
+- `/internal`
   - `/router`: custom router
   - `/storage`: wrapper for a hash table to use as in-memory storage
   - `/webserver`: http webserver implementation and route handlers
-  - `/wine`: contains *Wine* struct definition
+  - `/model`: contains domain model *Wine*
 - `/data`
   - `/data_sample.json`: sample data for the webserver
 
@@ -85,11 +85,11 @@ Clone the repository and cd to its root folder.
 
 To start the server:
 
-- `go run ./cmd` or `go build ./cmd/winery.go && ./winery`
+- `go run ./cmd/restapi` or `go build ./cmd/restapi/main.go && ./main`
 
 To run tests:
 
-- `go test ./pkg/webserver`
+- `go test ./internal/webserver`
 
 ## Further Recommendations
 
