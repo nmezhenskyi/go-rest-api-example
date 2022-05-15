@@ -15,17 +15,11 @@ func (s *Server) handleWineGetAll() http.HandlerFunc {
 
 		wineRecords, ok := s.storage.FindAll()
 		if !ok {
-			http.Error(w, "Wine not found", http.StatusNotFound)
+			sendNotFound(w, "Wine not found")
 			return
 		}
 
-		bytes, err := json.Marshal(wineRecords)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		sendJSON(w, bytes, 200)
+		sendJSON(w, http.StatusOK, wineRecords)
 	}
 }
 
@@ -36,17 +30,11 @@ func (s *Server) handleWineGetOne() http.HandlerFunc {
 		wineId := router.URLParam(req, "id")
 		wineRecord, ok := s.storage.FindById(wineId)
 		if !ok {
-			http.Error(w, "Wine not found", http.StatusNotFound)
+			sendNotFound(w, "Wine not found")
 			return
 		}
 
-		bytes, err := json.Marshal(wineRecord)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		sendJSON(w, bytes, 200)
+		sendJSON(w, http.StatusOK, wineRecord)
 	}
 }
 
@@ -56,25 +44,25 @@ func (s *Server) handleWineCreate() http.HandlerFunc {
 
 		body, err := ioutil.ReadAll(req.Body)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			sendInternalError(w)
 			return
 		}
 
 		wineRecord := new(model.Wine)
 		err = json.Unmarshal(body, wineRecord)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			sendInternalError(w)
 			return
 		}
 
 		_, ok := s.storage.FindById(wineRecord.ID)
 		if ok {
-			http.Error(w, "Wine with this ID already exists", http.StatusBadRequest)
+			sendBadRequest(w, "Wine with this ID already exists", nil)
 			return
 		}
 
 		s.storage.Save(wineRecord.ID, wineRecord)
-		sendJSON(w, body, http.StatusCreated)
+		sendJSON(w, http.StatusCreated, wineRecord)
 	}
 }
 
@@ -85,20 +73,20 @@ func (s *Server) handleWineUpdate() http.HandlerFunc {
 		wineId := router.URLParam(req, "id")
 		wineRecord, ok := s.storage.FindById(wineId)
 		if !ok {
-			http.Error(w, "Wine not found", http.StatusNotFound)
+			sendNotFound(w, "Wine not found")
 			return
 		}
 
 		body, err := ioutil.ReadAll(req.Body)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			sendInternalError(w)
 			return
 		}
 
 		update := new(model.Wine)
 		err = json.Unmarshal(body, update)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+			sendInternalError(w)
 			return
 		}
 
@@ -133,15 +121,7 @@ func (s *Server) handleWineUpdate() http.HandlerFunc {
 		}
 
 		s.storage.Save(wineId, newRecord)
-
-		var resData []byte
-		resData, err = json.Marshal(newRecord)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-
-		sendJSON(w, resData, http.StatusOK)
+		sendJSON(w, http.StatusOK, newRecord)
 	}
 }
 
@@ -152,7 +132,7 @@ func (s *Server) handleWineDelete() http.HandlerFunc {
 		wineId := router.URLParam(req, "id")
 		_, ok := s.storage.FindById(wineId)
 		if !ok {
-			http.Error(w, "Wine not found", http.StatusNotFound)
+			sendNotFound(w, "Wine not found")
 			return
 		}
 
