@@ -4,6 +4,9 @@ build:
 dev:
 	go run ./cmd/restapi
 
+test:
+	go test ./internal/webserver
+
 run:
 	./bin/restapi
 
