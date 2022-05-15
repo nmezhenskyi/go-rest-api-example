@@ -3,6 +3,7 @@
 package webserver
 
 import (
+	"context"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -13,32 +14,39 @@ import (
 )
 
 type Server struct {
-	router  http.Handler
-	storage *storage.Storage
-	Logger  *log.Logger
+	httpServer *http.Server
+	router     http.Handler
+	storage    *storage.Storage
+
+	Logger *log.Logger
 }
 
 func NewServer() *Server {
 	s := &Server{
-		storage: storage.NewStorage(),
-		Logger:  log.Default(),
+		httpServer: &http.Server{},
+		storage:    storage.NewStorage(),
+		Logger:     log.Default(),
 	}
 	s.routes()
 	return s
 }
 
 func (s *Server) ListenAndServe(addr string) error {
-	httpServer := http.Server{
-		Addr:    addr,
-		Handler: s.router,
-	}
+	s.httpServer.Addr = addr
+	s.httpServer.Handler = s.router
 	s.Logger.Printf("Server is starting on %s\n", addr)
-	return httpServer.ListenAndServe()
+	return s.httpServer.ListenAndServe()
+}
+
+func (s *Server) Shutdown(ctx context.Context) error {
+	return s.httpServer.Shutdown(ctx)
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
+
+// Helpers:
 
 func (s *Server) PopulateWithData(file string) error {
 	bytes, err := os.ReadFile(file)
